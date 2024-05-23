@@ -7,6 +7,7 @@ export default function Home() {
       <SiteHeader />
       <main className="container">
         <Input />
+        <div>hello </div>
       </main>
     </>
   );
