@@ -10,19 +10,19 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from '@/components/ui/command';
-import { DialogProps } from '@radix-ui/react-dialog';
+import { DialogProps } from '@radix-ui/react-alert-dialog';
 import { Button } from './ui/button';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
-export default function CommandMenu({ props }: DialogProps) {
+export default function CommandMenu({ ...props }: DialogProps) {
   const [open, setOpen] = useState(false);
   return (
     <>
       <Button
         variant={'outline'}
         className={cn(
-          'relative h-8 w-full justify-start rounded-[0.5rem] bg-background text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-64',
+          'relative h-8 w-full justify-start rounded-[0.5rem] border-border/60 bg-background text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-64',
         )}
         onClick={() => setOpen(true)}
         {...props}
