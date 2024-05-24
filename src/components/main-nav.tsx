@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import Logo from './logo';
 import { ScrollArea, ScrollBar } from './ui/scroll-area';
 import { useScrollIntoViewWithRef } from '@/hooks/useScrollIntoViewWithRef';
+import { FC } from 'react';
 
 export function MainNav() {
   return <div>sidebar</div>;
@@ -37,7 +38,7 @@ export function DashboardNav({ className }: React.HTMLAttributes<HTMLElement>) {
   );
 }
 
-export const DashboardSidebar = () => {
+export const DashboardSidebar: FC = () => {
   return (
     <div className="lg:flex-block flex h-screen flex-col border-r border-border/60">
       <div className="flex h-14 items-center border-b border-border/60 px-3">

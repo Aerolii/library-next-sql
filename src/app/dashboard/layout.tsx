@@ -8,7 +8,9 @@ export default function DashboardLayout({
 }: ReactComponentChildrenType) {
   return (
     <div className="grid h-screen overflow-hidden lg:grid-cols-[220px_1fr]">
-      <DashboardSidebar />
+      <div className="hidden lg:block">
+        <DashboardSidebar />
+      </div>
       <div>
         <div className="flex h-14 items-center  space-x-2 border-b border-border/60 px-3">
           <div className="rounded-full bg-accent p-2 text-accent-foreground lg:hidden">
