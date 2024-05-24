@@ -39,7 +39,7 @@ export function DashboardNav({ className }: React.HTMLAttributes<HTMLElement>) {
 
 export const DashboardSidebar = () => {
   return (
-    <div className="lg:flex-block flex min-h-screen flex-col border-r border-border/60">
+    <div className="lg:flex-block flex h-screen flex-col border-r border-border/60">
       <div className="flex h-14 items-center border-b border-border/60 px-3">
         <Logo />
       </div>
