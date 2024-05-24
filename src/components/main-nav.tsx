@@ -1,17 +1,21 @@
 'use client';
 
 import { dashboardNav } from '@/config/nav';
-import { NavLink, SidebarNav } from './sidebar-nav';
+import { NavLink } from './sidebar-nav';
 import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 export function MainNav() {
   return <div>sidebar</div>;
 }
 
-export function DashboardNav() {
+export function DashboardNav({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLElement>) {
   const pathname = usePathname();
   return (
-    <nav className="flex flex-col">
+    <nav className={cn('flex flex-col space-y-2', className)}>
       {dashboardNav.items.map(({ href, title }) => (
         <NavLink
           active={

@@ -1,5 +1,5 @@
+import Logo from '@/components/logo';
 import { DashboardNav } from '@/components/main-nav';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { ReactComponentChildrenType } from '@/types';
 
 export default function DashboardLayout({
@@ -7,8 +7,11 @@ export default function DashboardLayout({
 }: ReactComponentChildrenType) {
   return (
     <div className="grid min-h-screen lg:grid-cols-[220px_1fr]">
-      <div>
-        <DashboardNav />
+      <div className="hidden border-r border-border/60 lg:block">
+        <div className="flex h-14 items-center border-b border-border/60 px-2">
+          <Logo />
+        </div>
+        <DashboardNav className="px-3 py-2" />
       </div>
       <div>{children}</div>
     </div>
