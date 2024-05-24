@@ -5,3 +5,8 @@ export type NavLinkProps = {
   href: string;
   title: string;
 };
+
+// react function component children props
+export type ReactComponentChildrenType = {
+  children: React.ReactNode;
+};
