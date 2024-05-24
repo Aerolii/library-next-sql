@@ -13,14 +13,20 @@ export default function SiteHeader() {
         {siteNavItems.map(({ href, title }) => (
           <NavLink key={href} href={href} title={title} />
         ))}
-        <div className="flex flex-1 items-center space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            <CommandMenu />
-          </div>
-          <ThemeSwitcher />
-          <UserAvatar />
-        </div>
+        <CommonHeader />
       </div>
     </header>
   );
 }
+
+export const CommonHeader = () => {
+  return (
+    <div className="flex flex-1 items-center space-x-2 md:justify-end">
+      <div className="w-full flex-1 md:w-auto md:flex-none">
+        <CommandMenu />
+      </div>
+      <ThemeSwitcher />
+      <UserAvatar />
+    </div>
+  );
+};

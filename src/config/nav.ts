@@ -51,5 +51,41 @@ export const dashboardNav = {
       title: 'Publishing',
       href: '/dashboard/publishing',
     },
+    {
+      title: 'Publishing',
+      href: '/dashboard/publishing/2',
+    },
+    {
+      title: 'Publishing',
+      href: '/dashboard/publishing/3',
+    },
+    {
+      title: 'Publishing',
+      href: '/dashboard/publishing/4',
+    },
+    {
+      title: 'Publishing',
+      href: '/dashboard/publishing/5',
+    },
+    {
+      title: 'Publishing',
+      href: '/dashboard/publishing/6',
+    },
+    {
+      title: 'Publishing',
+      href: '/dashboard/publishing/7',
+    },
+    {
+      title: 'Publishing',
+      href: '/dashboard/publishing/8',
+    },
+    {
+      title: 'Publishing',
+      href: '/dashboard/publishing/9',
+    },
+    {
+      title: 'Publishing',
+      href: '/dashboard/publishing/10',
+    },
   ],
 };

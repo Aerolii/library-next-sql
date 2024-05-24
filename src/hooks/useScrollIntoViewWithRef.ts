@@ -29,7 +29,7 @@ export const useScrollIntoViewWithRef = () => {
       const node = map.get(key);
       node?.scrollIntoView({
         behavior: 'smooth',
-        block: 'nearest',
+        block: 'center',
         inline: 'center',
       });
     },

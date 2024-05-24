@@ -13,19 +13,12 @@ import { useScrollIntoViewWithRef } from '@/hooks/useScrollIntoViewWithRef';
 export function SidebarNav({
   className,
   items,
-  ...props
 }: ReactFCProps<{ items: NavLinkProps[] }>) {
   const pathname = usePathname();
   const { scrollIntoView, setMap } = useScrollIntoViewWithRef();
   return (
-    <ScrollArea className="w-full whitespace-nowrap">
-      <nav
-        className={cn(
-          'flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1',
-          className,
-        )}
-        {...props}
-      >
+    <ScrollArea className={cn('w-full whitespace-nowrap', className)}>
+      <nav className={'flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1'}>
         {items.map((item) => (
           <NavLink
             key={item.href}
