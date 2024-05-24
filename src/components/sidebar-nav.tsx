@@ -22,7 +22,7 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
     <ScrollArea className="w-full whitespace-nowrap">
       <nav
         className={cn(
-          'flex w-max space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1',
+          'flex w-max space-x-1 lg:flex-col lg:space-x-0 lg:space-y-1',
           className,
         )}
         {...props}
@@ -34,7 +34,7 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
               href={item.href}
               className={cn(
                 pathname === item.href
-                  ? 'bg-primary text-primary-foreground hover:bg-primary'
+                  ? 'bg-muted hover:bg-muted'
                   : 'hover:bg-transparent hover:underline',
               )}
             />
