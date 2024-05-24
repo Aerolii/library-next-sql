@@ -4,6 +4,7 @@ export type ReactFCProps<T> = T & React.HTMLAttributes<HTMLElement>;
 export type NavLinkProps = {
   href: string;
   title: string;
+  active?: boolean;
 };
 
 // react function component children props

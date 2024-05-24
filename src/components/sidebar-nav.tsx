@@ -33,11 +33,7 @@ export function SidebarNav({
             title={item.title}
             ref={(node: HTMLAnchorElement) => setMap(item.href, node)}
             onClick={() => scrollIntoView(item.href)}
-            className={cn(
-              pathname === item.href
-                ? 'bg-muted hover:bg-muted'
-                : 'hover:bg-transparent hover:underline',
-            )}
+            active={pathname === item.href}
           />
         ))}
       </nav>
@@ -48,14 +44,17 @@ export function SidebarNav({
 export const NavLink = React.forwardRef<
   React.ElementRef<'a'>,
   React.ComponentPropsWithRef<'a'> & LinkProps & NavLinkProps
->(({ href, title, className, ...props }, ref) => {
+>(({ href, title, className, active, ...props }, ref) => {
   return (
     <Link
       href={href}
       ref={ref}
       className={cn(
         buttonVariants({ variant: 'ghost' }),
-        'justify-start',
+        active
+          ? 'bg-muted hover:bg-muted'
+          : 'hover:bg-transparent hover:underline',
+        'justify-start ',
         className,
       )}
       {...props}

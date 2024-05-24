@@ -1,11 +1,16 @@
-import MainNav from '@/components/main-nav';
+import { DashboardNav } from '@/components/main-nav';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import { ReactComponentChildrenType } from '@/types';
 
-export default function DashboardLayout() {
+export default function DashboardLayout({
+  children,
+}: ReactComponentChildrenType) {
   return (
-    <div className="grid grid-rows-[56px_1ft] lg:grid-cols-[220px_1fr]">
-      <MainNav />
-      <main>main</main>
+    <div className="grid min-h-screen lg:grid-cols-[220px_1fr]">
+      <div>
+        <DashboardNav />
+      </div>
+      <div>{children}</div>
     </div>
   );
 }
