@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export function UserAvatar() {
   return (
-    <Link href="/login">
+    <Link href="/profile">
       <Avatar>
         <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
         <AvatarFallback>CN</AvatarFallback>
