@@ -31,7 +31,7 @@ export function ProfileNav({ className, items, ...props }: SidebarNavProps) {
           className={cn(
             buttonVariants({ variant: 'ghost' }),
             pathname === item.href
-              ? 'bg-muted hover:bg-muted'
+              ? 'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground'
               : 'hover:bg-transparent hover:underline',
             'justify-start',
           )}
