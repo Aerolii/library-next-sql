@@ -12,11 +12,41 @@ import {
 } from '@/components/ui/command';
 import { DialogProps } from '@radix-ui/react-alert-dialog';
 import { Button } from './ui/button';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { LaptopIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
+import { useTheme } from 'next-themes';
 
 export default function CommandMenu({ ...props }: DialogProps) {
   const [open, setOpen] = useState(false);
+  const { setTheme } = useTheme();
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || e.key === '/') {
+        if (
+          (e.target instanceof HTMLElement && e.target.isContentEditable) ||
+          e.target instanceof HTMLInputElement ||
+          e.target instanceof HTMLTextAreaElement ||
+          e.target instanceof HTMLSelectElement
+        ) {
+          return;
+        }
+
+        e.preventDefault();
+        setOpen((open) => !open);
+      }
+    };
+    document.addEventListener('keydown', down);
+
+    return () => document.removeEventListener('keydown', down);
+  });
+
+  // 利用 useCallback 存储函数实例
+  const runCommand = useCallback((command: () => unknown) => {
+    setOpen(false);
+    command();
+  }, []);
   return (
     <>
       <Button
@@ -47,6 +77,22 @@ export default function CommandMenu({ ...props }: DialogProps) {
             <CommandItem>Profile</CommandItem>
             <CommandItem>Billing</CommandItem>
             <CommandItem>Settings</CommandItem>
+          </CommandGroup>
+
+          <CommandSeparator />
+          <CommandGroup heading="Theme">
+            <CommandItem onSelect={() => runCommand(() => setTheme('light'))}>
+              <SunIcon className="mr-2 h-4 w-4" />
+              Light
+            </CommandItem>
+            <CommandItem onSelect={() => runCommand(() => setTheme('dark'))}>
+              <MoonIcon className="mr-2 h-4 w-4" />
+              Dark
+            </CommandItem>
+            <CommandItem onSelect={() => runCommand(() => setTheme('system'))}>
+              <LaptopIcon className="mr-2 h-4 w-4" />
+              System
+            </CommandItem>
           </CommandGroup>
         </CommandList>
       </CommandDialog>
