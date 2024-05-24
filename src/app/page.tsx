@@ -5,10 +5,7 @@ export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main className="container">
-        <Input />
-        <div>hello </div>
-      </main>
+      <main className="container"></main>
     </>
   );
 }

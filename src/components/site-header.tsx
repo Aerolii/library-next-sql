@@ -1,5 +1,6 @@
 import CommandMenu from './command-menu';
 import { ThemeSwitcher } from './theme-switcher';
+import { UserAvatar } from './user-avatar';
 
 export default function SiteHeader() {
   return (
@@ -11,6 +12,7 @@ export default function SiteHeader() {
             <CommandMenu />
           </div>
           <ThemeSwitcher />
+          <UserAvatar />
         </div>
       </div>
     </header>
