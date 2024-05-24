@@ -1,3 +1,3 @@
 export default function MainNav() {
-  return <div></div>;
+  return <div>sidebar</div>;
 }

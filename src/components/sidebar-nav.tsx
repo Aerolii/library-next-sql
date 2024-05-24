@@ -6,18 +6,17 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import React, { Fragment, useRef } from 'react';
+import React from 'react';
+import { NavLinkProps, ReactFCProps } from '@/types';
+import { useScrollIntoViewWithRef } from '@/hooks/useScrollIntoViewWithRef';
 
-interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
-  items: {
-    href: string;
-    title: string;
-  }[];
-}
-
-export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
+export function SidebarNav({
+  className,
+  items,
+  ...props
+}: ReactFCProps<{ items: NavLinkProps[] }>) {
   const pathname = usePathname();
-
+  const { scrollIntoView, setMap } = useScrollIntoViewWithRef();
   return (
     <ScrollArea className="w-full whitespace-nowrap">
       <nav
@@ -32,14 +31,14 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
             key={item.href}
             href={item.href}
             title={item.title}
+            ref={(node: HTMLAnchorElement) => setMap(item.href, node)}
+            onClick={() => scrollIntoView(item.href)}
             className={cn(
-              buttonVariants({ variant: 'ghost' }),
               pathname === item.href
                 ? 'bg-muted hover:bg-muted'
                 : 'hover:bg-transparent hover:underline',
-              'justify-start',
             )}
-          ></NavLink>
+          />
         ))}
       </nav>
     </ScrollArea>
@@ -48,7 +47,7 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
 
 export const NavLink = React.forwardRef<
   React.ElementRef<'a'>,
-  React.ComponentPropsWithRef<'a'> & LinkProps
+  React.ComponentPropsWithRef<'a'> & LinkProps & NavLinkProps
 >(({ href, title, className, ...props }, ref) => {
   return (
     <Link
