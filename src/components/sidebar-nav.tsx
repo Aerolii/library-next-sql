@@ -22,55 +22,48 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
     <ScrollArea className="w-full whitespace-nowrap">
       <nav
         className={cn(
-          'flex w-max space-x-1 lg:flex-col lg:space-x-0 lg:space-y-1',
+          'flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1',
           className,
         )}
         {...props}
       >
         {items.map((item) => (
-          <Fragment key={item.href}>
-            <NavLink
-              title={item.title}
-              href={item.href}
-              className={cn(
-                pathname === item.href
-                  ? 'bg-muted hover:bg-muted'
-                  : 'hover:bg-transparent hover:underline',
-              )}
-            />
-          </Fragment>
+          <NavLink
+            key={item.href}
+            href={item.href}
+            title={item.title}
+            className={cn(
+              buttonVariants({ variant: 'ghost' }),
+              pathname === item.href
+                ? 'bg-muted hover:bg-muted'
+                : 'hover:bg-transparent hover:underline',
+              'justify-start',
+            )}
+          ></NavLink>
         ))}
       </nav>
     </ScrollArea>
   );
 }
 
-export const NavLink: React.FC<
-  LinkProps & { title: string } & React.ComponentProps<'a'>
-> = ({ href, title, className, ...props }) => {
-  const currentRef = useRef<React.ComponentRef<'a'>>(null);
-  const handleClick = () => {
-    currentRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
-      inline: 'center',
-    });
-  };
-
+export const NavLink = React.forwardRef<
+  React.ElementRef<'a'>,
+  React.ComponentPropsWithRef<'a'> & LinkProps
+>(({ href, title, className, ...props }, ref) => {
   return (
     <Link
       href={href}
+      ref={ref}
       className={cn(
         buttonVariants({ variant: 'ghost' }),
         'justify-start',
         className,
       )}
-      ref={currentRef}
-      onClick={handleClick}
+      {...props}
     >
       {title}
     </Link>
   );
-};
+});
 
 NavLink.displayName = 'NavLink';
