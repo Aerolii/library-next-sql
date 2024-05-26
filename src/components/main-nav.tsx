@@ -2,7 +2,7 @@
 
 import { dashboardNav } from '@/config/nav';
 import { NavLink } from './sidebar-nav';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import Logo from './logo';
 import { ScrollArea, ScrollBar } from './ui/scroll-area';
@@ -13,8 +13,16 @@ export function MainNav() {
   return <div>sidebar</div>;
 }
 
-export function DashboardNav({ className }: React.HTMLAttributes<HTMLElement>) {
+interface DashboardNavProps extends React.HTMLAttributes<HTMLElement> {
+  onClickCallback?: () => void;
+}
+
+export function DashboardNav({
+  className,
+  onClickCallback,
+}: DashboardNavProps) {
   const pathname = usePathname();
+  const { push } = useRouter();
 
   const { scrollIntoView, setMap } = useScrollIntoViewWithRef();
   return (
@@ -30,7 +38,11 @@ export function DashboardNav({ className }: React.HTMLAttributes<HTMLElement>) {
               : pathname.startsWith(href)
           }
           ref={(node: HTMLAnchorElement) => setMap(href, node)}
-          onClick={() => scrollIntoView(href)}
+          onClick={() => {
+            push(href.toString());
+            scrollIntoView(href);
+            onClickCallback?.();
+          }}
           className="py-10"
         />
       ))}

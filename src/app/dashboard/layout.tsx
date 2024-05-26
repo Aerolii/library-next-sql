@@ -1,4 +1,5 @@
 import { DashboardSidebar } from '@/components/main-nav';
+import MobileNav from '@/components/mobile-nav';
 import { CommonHeader } from '@/components/site-header';
 import { ReactComponentChildrenType } from '@/types';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
@@ -11,11 +12,10 @@ export default function DashboardLayout({
       <div className="hidden lg:block">
         <DashboardSidebar />
       </div>
+
       <div>
         <div className="flex h-14 items-center  space-x-2 border-b border-border/60 px-3">
-          <div className="rounded-full bg-accent p-2 text-accent-foreground lg:hidden">
-            <HamburgerMenuIcon />
-          </div>
+          <MobileNav />
           <CommonHeader />
         </div>
         <div>{children}</div>
