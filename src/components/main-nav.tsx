@@ -43,7 +43,6 @@ export function DashboardNav({
             scrollIntoView(href);
             onClickCallback?.();
           }}
-          className="py-10"
         />
       ))}
     </nav>

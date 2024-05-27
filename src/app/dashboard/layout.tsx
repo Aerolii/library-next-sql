@@ -14,7 +14,7 @@ export default function DashboardLayout({
       </div>
 
       <div>
-        <div className="flex h-14 items-center  space-x-2 border-b border-border/60 px-3">
+        <div className="flex h-14 items-center space-x-2 border-b border-border/60 px-3">
           <MobileNav />
           <CommonHeader />
         </div>
