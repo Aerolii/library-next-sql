@@ -9,7 +9,7 @@ export default function SiteHeader() {
   return (
     <header className="w-ful sticky top-0 z-50 border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 max-w-screen-2xl items-center space-x-2">
-        <div className="hidden">
+        <div className="hidden items-center md:inline-flex">
           <Logo />
           {siteNavItems.map(({ href, title }) => (
             <NavLink key={href} href={href} title={title} />
