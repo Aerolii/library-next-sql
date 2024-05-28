@@ -62,7 +62,7 @@ async function BooksCard() {
   const books = await fetchBooks();
   const book = books[0];
   return (
-    <Card className="border-0 p-0 shadow-none">
+    <Card className="border-0 bg-transparent p-0 shadow-none">
       <CardContent className="grid h-full space-x-2 p-0 md:grid-cols-[40%_60%]">
         <div>
           <AspectRatio ratio={345 / 500}>

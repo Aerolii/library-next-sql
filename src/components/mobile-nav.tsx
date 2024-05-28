@@ -27,7 +27,7 @@ export default function MobileNav() {
 
       <SheetContent side="left" className="p-2">
         <div className="flex h-full flex-col">
-          <div>
+          <div className="h-14">
             <Logo />
           </div>
           <div className="mt-2 flex-1 overflow-hidden">
